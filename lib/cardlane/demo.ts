@@ -1,0 +1,6 @@
+import {keyPair,encryptCard,open,decryptCard,type Envelope} from './crypto';import {type Product} from './client';import type {Hex} from 'viem';
+const templates=[['Coffee Club','餐饮',50,42,'coffee'],['Play District','游戏',100,85,'play'],['Everyday Store','购物',100,88,'store'],['Frame Studio','订阅',25,20,'studio'],['Coffee Club','餐饮',25,22,'coffee'],['Play District','游戏',50,43,'play']] as const;
+export const sampleProducts:Product[]=templates.map(([brand,category,face,price,color],i)=>({id:('0x'+String(i+1).padStart(64,'0')) as Hex,brand,category,face,price,color,region:'全球',state:1}));
+const localKeys=new Map<string,{pair:ReturnType<typeof keyPair>;envelope:Envelope}>();
+export async function demoUpload(p:Product,secret:{code:string;pin:string}){const pair=keyPair();const envelope=await encryptCard(p.id,{brand:p.brand,category:p.category,region:p.region,face:String(p.face)},secret,pair.publicKey);localKeys.set(p.id,{pair,envelope});}
+export async function demoDelivery(p:Product){if(![2,3,4].includes(p.state))throw new Error('请先完成演示付款');if(!localKeys.has(p.id))await demoUpload(p,{code:'DEMO-'+p.brand.toUpperCase().replaceAll(' ','-')+'-'+p.face,pin:'0000'});const stored=localKeys.get(p.id)!;const key=await open(stored.pair.privateKey,stored.envelope.wrappedKey,p.id);return decryptCard(stored.envelope,key);}
