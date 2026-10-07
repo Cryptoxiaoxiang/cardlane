@@ -48,3 +48,6 @@ next-env.d.ts
 *.tsbuildinfo
 .env*
 !.env.example
+
+# Ignore generated keeper build output at every nesting level.
+**/.sites-runtime/
