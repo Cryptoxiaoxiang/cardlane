@@ -45,6 +45,44 @@ export const CardLaneAbi = [
         "type": "bytes32"
       },
       {
+        "indexed": false,
+        "internalType": "uint8",
+        "name": "reason",
+        "type": "uint8"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint64",
+        "name": "openedAt",
+        "type": "uint64"
+      }
+    ],
+    "name": "AppealOpened",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "internalType": "bytes32",
+        "name": "id",
+        "type": "bytes32"
+      }
+    ],
+    "name": "AutoConfirmed",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "internalType": "bytes32",
+        "name": "id",
+        "type": "bytes32"
+      },
+      {
         "indexed": true,
         "internalType": "address",
         "name": "seller",
@@ -96,6 +134,31 @@ export const CardLaneAbi = [
       },
       {
         "indexed": false,
+        "internalType": "uint64",
+        "name": "repliedAt",
+        "type": "uint64"
+      },
+      {
+        "indexed": false,
+        "internalType": "string",
+        "name": "reply",
+        "type": "string"
+      }
+    ],
+    "name": "SellerReplied",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "internalType": "bytes32",
+        "name": "id",
+        "type": "bytes32"
+      },
+      {
+        "indexed": false,
         "internalType": "enum CardLane.State",
         "name": "state",
         "type": "uint8"
@@ -107,6 +170,32 @@ export const CardLaneAbi = [
   {
     "inputs": [],
     "name": "CLAIM_WINDOW",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "REPLY_WINDOW",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "VERSION",
     "outputs": [
       {
         "internalType": "uint256",
@@ -269,11 +358,57 @@ export const CardLaneAbi = [
         "internalType": "bytes32",
         "name": "id",
         "type": "bytes32"
+      },
+      {
+        "internalType": "uint8",
+        "name": "reason",
+        "type": "uint8"
       }
     ],
     "name": "dispute",
     "outputs": [],
     "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "bytes32",
+        "name": "id",
+        "type": "bytes32"
+      }
+    ],
+    "name": "getAppeal",
+    "outputs": [
+      {
+        "components": [
+          {
+            "internalType": "uint64",
+            "name": "openedAt",
+            "type": "uint64"
+          },
+          {
+            "internalType": "uint64",
+            "name": "repliedAt",
+            "type": "uint64"
+          },
+          {
+            "internalType": "uint8",
+            "name": "reason",
+            "type": "uint8"
+          },
+          {
+            "internalType": "string",
+            "name": "reply",
+            "type": "string"
+          }
+        ],
+        "internalType": "struct CardLane.Appeal",
+        "name": "",
+        "type": "tuple"
+      }
+    ],
+    "stateMutability": "view",
     "type": "function"
   },
   {
@@ -349,6 +484,24 @@ export const CardLaneAbi = [
       }
     ],
     "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "bytes32",
+        "name": "id",
+        "type": "bytes32"
+      },
+      {
+        "internalType": "string",
+        "name": "reply",
+        "type": "string"
+      }
+    ],
+    "name": "replyToAppeal",
+    "outputs": [],
+    "stateMutability": "nonpayable",
     "type": "function"
   },
   {
