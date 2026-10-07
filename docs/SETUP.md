@@ -77,3 +77,9 @@
 5. 在两个测试钱包完成正常确认、超时自动结算、申诉冻结及回复的外部验收后，把网站 CARDLANE_SETTLEMENT_ENABLED 设置为 true。该开关只表示人工配置确认，不是 keeper 在线健康证明。完整真实模式同时要求合约、Lighthouse 和 Lit 配置成功。
 
 官方 Cron 文档：https://developers.cloudflare.com/workers/configuration/cron-triggers/ 。网站发布不会自动部署这个独立 keeper；当前只有本地 EVM 定时结算测试通过后才算代码验证，真实定时任务仍待上述配置。
+
+## 浏览器钱包部署（无需导出私钥）
+
+运行 `npm run deploy:browser`，在安装钱包扩展的浏览器打开 http://127.0.0.1:5175/ 。依次连接钱包、部署测试代币、部署托管合约，两笔部署交易均由用户在钱包内确认。页面仅允许 Base Sepolia。连接的账号为托管合约仲裁者和初始授权卖家。部署结果经独立 RPC 核验交易收据、完整部署字节码及构造参数后，保存在忽略目录 `.sites-runtime/browser-deploy/deployment.json`，不包含私钥。
+
+内置浏览器通常没有钱包扩展；请使用装有 MetaMask、OKX 或 Rabby 的浏览器。部署成功后仍需按本文配置 Lit、Lighthouse 和 keeper，不能把部署成功视为外部服务联调成功。

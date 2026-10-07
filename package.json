@@ -16,7 +16,8 @@
     "contracts:compile": "node scripts/compile-contracts.mjs",
     "action:build": "node scripts/build-action.mjs",
     "test": "node scripts/test-contracts.mjs",
-    "deploy:testnet": "node scripts/deploy-testnet.mjs"
+    "deploy:testnet": "node scripts/deploy-testnet.mjs",
+    "deploy:browser": "node scripts/deploy-browser.mjs"
   },
   "dependencies": {
     "@base-ui/react": "^1.7.0",
