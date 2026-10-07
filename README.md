@@ -13,7 +13,17 @@
 - 浏览器 AES-GCM 加密，Filecoin / Lighthouse 密文上传，Lit 当前 Chipotle API 交付适配。
 - 兑换码不进入链上状态、日志或平台存储。平台代理看到加密文件及重新封装的内容密钥。
 
-**部署网站并不等于部署了链上合约或接通外部服务。** 当前未配置服务密钥、未部署新版 Base Sepolia 合约及定时 keeper、未完成真实 Filecoin / Lit 网络联调。缺失配置时真实模式禁用交易，绝不伪装付款成功。示例商户虚构，示例卡无兑换价值。
+**部署网站并不等于部署了链上合约或接通外部服务。** 新版 Base Sepolia 合约已部署并通过独立 RPC 核验；当前未配置服务密钥、未部署定时 keeper、未完成真实 Filecoin / Lit 网络联调。缺失配置时真实模式禁用交易，绝不伪装付款成功。示例商户虚构，示例卡无兑换价值。
+
+## 已部署的测试网合约
+
+网络：Base Sepolia（chain ID 84532），合约 VERSION=2，仅接受无价值 testUSDC。
+
+- 托管合约：[0x7280c672e102751067baa3d6e50a955435ffe072](https://sepolia.basescan.org/address/0x7280c672e102751067baa3d6e50a955435ffe072)
+- 测试代币：[0x27888c308e2f555ac31da2da382a77c1cf201023](https://sepolia.basescan.org/address/0x27888c308e2f555ac31da2da382a77c1cf201023)
+- 仲裁者和初始授权卖家：`0x6234d654a5927522db05af1052c32526598f4655`。
+
+[部署交易与核验记录](deployments/base-sepolia.json)包含两笔交易、区块号及待注册的 Lit Action 源码摘要。部署字节码和构造参数与仓库产物一致；已读取确认 48 小时托管期限、24 小时回复期限及卖家授权。此核验不等同于安全审计或外部服务联调。
 
 ## 本地运行
 

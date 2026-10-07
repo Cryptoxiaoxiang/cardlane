@@ -1,0 +1,39 @@
+{
+  "token": "0x27888c308e2f555ac31da2da382a77c1cf201023",
+  "tokenTx": "0xd3cda84d40b0cab7827246f99ff39cf3703d7ff2684ec3cfc5c3b0be4ad72fef",
+  "arbiter": "0x6234d654a5927522db05af1052c32526598f4655",
+  "chainId": 84532,
+  "contract": "0x7280c672e102751067baa3d6e50a955435ffe072",
+  "contractTx": "0x2ff9e375fc74f43c869a588e0badd313e4d2f761eb07236c7df97d3d49e02f13",
+  "network": "Base Sepolia",
+  "contractVersion": 2,
+  "claimWindowSeconds": 172800,
+  "replyWindowSeconds": 86400,
+  "initialSellerAuthorized": true,
+  "deploymentBlocks": {
+    "token": "47817782",
+    "contract": "47817786"
+  },
+  "verification": {
+    "rpc": "https://sepolia.base.org",
+    "checks": [
+      "successful creation receipts",
+      "exact deployment bytecode and constructor arguments",
+      "contract version, token and arbiter",
+      "48-hour claim and 24-hour reply windows",
+      "initial seller authorization"
+    ],
+    "date": "2026-10-07"
+  },
+  "litAction": {
+    "manifestVersion": 1,
+    "sourceKeccak256": "0x7ebefe0d3441a414ac341324130a5e542d7155d063c99733c6c970c36de2b736",
+    "registered": false
+  },
+  "externalServices": {
+    "lighthouseConfigured": false,
+    "litConfigured": false,
+    "keeperDeployed": false,
+    "endToEndVerified": false
+  }
+}

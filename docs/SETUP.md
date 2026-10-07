@@ -78,6 +78,12 @@
 
 官方 Cron 文档：https://developers.cloudflare.com/workers/configuration/cron-triggers/ 。网站发布不会自动部署这个独立 keeper；当前只有本地 EVM 定时结算测试通过后才算代码验证，真实定时任务仍待上述配置。
 
+## 已部署实例
+
+2026-10-07 已完成 Base Sepolia VERSION=2 部署，公开地址、交易与核验记录见 [deployments/base-sepolia.json](../deployments/base-sepolia.json)。网站已配置该实例的 RPC、合约、代币和仲裁者；定时结算开关保持关闭，直至 keeper 部署和外部验收完成。通常可直接使用此实例，无需再次部署。
+
+此合约绑定的 Lit Action 已在本地准备；尚未上传或注册，身份和 usage key 也尚未配置。按第 3 节完成注册时，使用此合约地址和固定模板重现源码，并核对部署记录中的 sourceKeccak256。不得改变已注册版本来处理已有密文。
+
 ## 浏览器钱包部署（无需导出私钥）
 
 运行 `npm run deploy:browser`，在安装钱包扩展的浏览器打开 http://127.0.0.1:5175/ 。依次连接钱包、部署测试代币、部署托管合约，两笔部署交易均由用户在钱包内确认。页面仅允许 Base Sepolia。连接的账号为托管合约仲裁者和初始授权卖家。部署结果经独立 RPC 核验交易收据、完整部署字节码及构造参数后，保存在忽略目录 `.sites-runtime/browser-deploy/deployment.json`，不包含私钥。
